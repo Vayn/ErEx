@@ -21,8 +21,8 @@ loop() ->
     {From, Msg} ->
       From ! {self(), Msg},
       %% Every process is async, so if you need a process
-      %% is alive, you can call the func recursively then
-      %% the receive will let the process hang out.
+      %% to be alive, you can call the func recursively
+      %% then the receive will let the process hang out.
       loop();
     stop ->
       true
