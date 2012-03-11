@@ -1,5 +1,5 @@
 -module(flushbox).
--export([read/1, flush/1]).
+-export([read/1, flush/0]).
 
 %% Demonstrate how to flush mailbox
 
@@ -8,7 +8,7 @@ read({Db, Key}) ->
   Db ! {self(), {read, Key}},
   receive
     {read, R} -> {ok, R};
-    {error, Reason} => {error, Reason}
+    {error, Reason} -> {error, Reason}
   after 1000 -> {error, timeout}
   end.
 
