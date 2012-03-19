@@ -2,6 +2,7 @@
 -export([start/0, stop/0, allocate/0, deallocate/1]).
 -export([init/0]).
 
+%% Server
 start() ->
   register(frequency, spawn(frequency, init, [])).
 
@@ -41,7 +42,6 @@ deallocate({Free, Allocated}, Freq) ->
 
 
 %% Client
-
 stop () -> call(stop).
 allocate() -> call(allocate).
 deallocate(Freq) -> call({deallocate, Freq}).
